@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 				$_SESSION['login']=$username; // Initializing Session
 				$_SESSION['user']=$codigoEmpleado; // Session User
 				if($row['idTipoUsuario'] == 1){
-					header('Location:vistaprin.php');
+					header('Location:principal.php');
 				}elseif($row['idTipoUsuario'] == 2){
 					header('Location:mainOperario.php');
 				}

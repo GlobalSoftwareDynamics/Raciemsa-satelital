@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="busqueda_dt.php">
                         <div class="card-footer">
                             <span class="pull-left">Tracto y Acople</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="text-success">
+                    <a href="busqueda_na.php" class="text-success">
                         <div class="card-footer">
                             <span class="pull-left">Nombre o Apellido</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="text-warning">
+                    <a href="busqueda_sap.php" class="text-warning">
                         <div class="card-footer">
                             <span class="pull-left">Número de Sap</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

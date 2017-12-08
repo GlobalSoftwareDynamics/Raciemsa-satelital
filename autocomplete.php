@@ -9,13 +9,14 @@ $result = mysqli_query($mysqli, $query);
 
 $data = array();
 
+
 if(mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_assoc($result))
     {
         $data[] = $row["Nombre"];
     }
-    echo json_encode($data);
+    echo json_encode(array_values(array_unique($data)));
 }
 
 ?>

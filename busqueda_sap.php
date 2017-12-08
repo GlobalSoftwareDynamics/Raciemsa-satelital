@@ -44,10 +44,10 @@ include('navbar.php');
                 {
                     $valor = $_POST['doc'];
                     if(isset($valor)){
-                        $where = "WHERE `Codigo Sap`='$valor'";
+                        $where = "WHERE `Codigo Sap`='$valor' AND `clase DT` = 'ZRAM'";
                     }
 
-                    $sql = "SELECT * FROM dt $where";
+                    $sql = "SELECT * FROM dt $where ORDER BY id_DT DESC";
                     $resultado = $mysqli->query($sql);
             while ($consulta_dt = $resultado->fetch_array(MYSQLI_BOTH))
             {

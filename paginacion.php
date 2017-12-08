@@ -13,7 +13,7 @@ $execute = $mysqli->query($sql_code) or die($mysqli->error);
 $dt = $execute->fetch_assoc();
 $num = $execute->num_rows;
 
-$num_total = $mysqli->query("SELECT * FROM dt")->num_rows;
+$num_total = $mysqli->query("SELECT * FROM dt ")->num_rows;
 $num_paginas = ceil($num_total/$items_por_pagina);
 
 ?>

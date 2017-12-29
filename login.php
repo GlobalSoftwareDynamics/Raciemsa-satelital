@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 // Selecting Database
 		mysqli_query($link,"SET NAMES 'utf8'");
 // SQL query to fetch information of registered users and finds user match.
-		$query = mysqli_query($link,"SELECT * FROM Empleado WHERE contrasena='$password' AND usuario='$username'");
+		$query = mysqli_query($link,"SELECT * FROM colaboradores WHERE contrasena='$password' AND usuario='$username'");
 		$rows = mysqli_num_rows($query);
 		if ($rows == 1) {
 			while($row = mysqli_fetch_array($query)){

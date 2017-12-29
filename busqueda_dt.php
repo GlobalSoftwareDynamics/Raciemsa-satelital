@@ -71,7 +71,9 @@ include('navbar.php');
 
             {
 
-                echo'<tr>
+                echo
+
+                    '<tr>
 						 <td>'.$consulta_dt['id_DT'].'</td>
 						 <td>'.$consulta_dt['numero DT'].'</td>
 						 <td>'.$consulta_dt['Fecha Inicio'].'</td>

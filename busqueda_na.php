@@ -21,7 +21,7 @@ include('navbar.php');
           </form>
     </div>
 <div class="container" >
-    <div class="row table-responsive">
+    <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr class="text-center">

@@ -13,14 +13,9 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="#" >
                             Búsqueda de Dts
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="busqueda_dt.php">Por Código Externo</a>
-                            <a class="dropdown-item" href="busqueda_na.php">Por Nombre y Apellido</a>
-                            <a class="dropdown-item" href="busqueda_sap.php">Por Código Sap</a>
-                        </div>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="#" >

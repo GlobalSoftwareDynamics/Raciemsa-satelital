@@ -40,8 +40,8 @@
 
                                         <th>Numero DT</th>
                                         <th>Fecha DT</th>
-                                        <th>Codigo Tracto</th>
-                                        <th>Placa Tracto</th>
+                                        <th>Codigo Acople</th>
+                                        <th>Placa Acople</th>
                                         <th>Codigo Sap</th>
                                         <th>Nombre</th>
 
@@ -61,38 +61,59 @@
 
                                     $sql = "SELECT * FROM dt $where";
                                     $sql2 = "SELECT * FROM dt $where2";
-                                    $resultado = $mysqli->query($sql);
-                                    $resultado2 = $mysqli->query($sql2);
+
+                                    $resultado = $link->query($sql);
+                                    $resultado2 = $link->query($sql2);
 
 
                                     while ($consulta_dt = $resultado->fetch_array(MYSQLI_BOTH))
                                     {
-                                        echo'
 
-                     <tr>
-                     <td>'.$consulta_dt['numero DT'].'</td>
-                     <td>'.$consulta_dt['Fecha Inicio'].'</td>
-                     <td>'.$consulta_dt['Codigo Acople'].'</td>
-                     <td>'.$consulta_dt['Placa Acople'].'</td>
-                     <td>'.$consulta_dt['Codigo Sap'].'</td>
-                     <td>'.$consulta_dt['Nombre'].'</td>
-                     </tr>';}}
+                                     $where3 = "WHERE `numeroDT`='{$consulta_dt['numeroDT']}'";
+                                     $sql3 = "SELECT * FROM dt_has_acople $where3";
+                                     $resultado3 = $link->query($sql3);
+
+                                     while ($consulta3 = $resultado3->fetch_array(MYSQLI_BOTH))
+                                     {
+                                     $where5 = "WHERE `codigoSAP`='{$consulta_dt['codigoSAP']}'";
+                                     $sql5 = "SELECT * FROM colaboradores $where5";
+                                     $resultado5 = $link->query($sql5);
+
+                                     while ($consulta5 = $resultado5->fetch_array(MYSQLI_BOTH))
+                                     {
+                                     $where7 = "WHERE `cod_acople`='{$consulta3['cod_acople']}'";
+                                     $sql7 = "SELECT * FROM acople $where7";
+                                     $resultado7 = $link->query($sql7);
+
+                                      while ($consulta7 = $resultado7->fetch_array(MYSQLI_BOTH))
+                                      {
+
+                                            echo'
+                                         <tr >
+                                         <td>'.$consulta_dt['numeroDT'].'</td>
+                                         <td>'.$consulta_dt['FechaInicio'].'</td>   
+                                         <td>'.$consulta3['cod_acople'].'</td>
+                                         <td>'.$consulta7['placa_acople'].'</td>
+                                         <td>'.$consulta_dt['codigoSAP'].'</td>
+                                         <td>'.$consulta5['nombreSAP'].'</td> 
+                                         </tr>';}}}}
 
                                     ?>
+
                                 </table>
                             </div>
                         </div>
                         <div class="tab-pane" id="ZRAM" role="tabpanel">
                             <span class="spacer15"></span>
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="azul2">
                                 <table class="table table-striped ">
                                     <thead>
                                     <tr class="text-center">
 
                                         <th>Numero DT</th>
                                         <th>Fecha DT</th>
-                                        <th>Codigo Tracto</th>
-                                        <th>Placa Tracto</th>
+                                        <th>Codigo Acople</th>
+                                        <th>Placa Acople</th>
                                         <th>Codigo Sap</th>
                                         <th>Nombre</th>
 
@@ -105,17 +126,33 @@
 
                                     while ($consulta2 = $resultado2->fetch_array(MYSQLI_BOTH))
                                     {
+                                        $where4 = "WHERE `numeroDT`='{$consulta2['numeroDT']}'";
+                                        $sql4 = "SELECT * FROM dt_has_acople $where4";
+                                        $resultado4 = $link->query($sql4);
+                                        while ($consulta4 = $resultado4->fetch_array(MYSQLI_BOTH))
+                                        {
+                                            $where6 = "WHERE `codigoSAP`='{$consulta2['codigoSAP']}'";
+                                            $sql6 = "SELECT * FROM colaboradores $where6";
+                                            $resultado6 = $link->query($sql6);
+                                    while ($consulta6 = $resultado6->fetch_array(MYSQLI_BOTH))
+                                    {
+                                        $where8 = "WHERE `cod_acople`='{$consulta4['cod_acople']}'";
+                                        $sql8 = "SELECT * FROM acople $where8";
+                                        $resultado8 = $link->query($sql8);
+
+                                        while ($consulta8 = $resultado8->fetch_array(MYSQLI_BOTH))
+                                        {
+
                                         echo'<tr>
 						 
-						 <td>'.$consulta2['numero DT'].'</td>
-						 <td>'.$consulta2['Fecha Inicio'].'</td>
-						 <td>'.$consulta2['Codigo Acople'].'</td>
-						 <td>'.$consulta2['Placa Acople'].'</td>
-						 <td>'.$consulta2['Codigo Sap'].'</td>
-						 <td>'.$consulta2['Nombre'].'</td>
-						 <td>'.$consulta2['Clase DT'].'</td>
-						 </tr>';
-                                    }
+						 <td>'.$consulta2['numeroDT'].'</td>
+						 <td>'.$consulta2['FechaInicio'].'</td>
+						 <td>'.$consulta4['cod_acople'].'</td>
+						 <td>'.$consulta8['placa_acople'].'</td>
+						 <td>'.$consulta2['codigoSAP'].'</td>
+						 <td>'.$consulta6['nombreSAP'].'</td>
+						 </tr>';}}}}}
+
                                     ?>
                                 </table>
                             </div>

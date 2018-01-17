@@ -14,7 +14,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" >
-                            Búsqueda de Dts
+                            Historial de Dts
                         </a>
                     </li>
                     <li class="nav-item ">

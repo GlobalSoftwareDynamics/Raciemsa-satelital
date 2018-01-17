@@ -40,8 +40,8 @@
 
                                         <th>Numero DT</th>
                                         <th>Fecha DT</th>
-                                        <th>Codigo Acople</th>
-                                        <th>Placa Acople</th>
+                                        <th>Codigo Tracto</th>
+                                        <th>Placa Tracto</th>
                                         <th>Codigo Sap</th>
                                         <th>Nombre</th>
 
@@ -50,33 +50,53 @@
                                     </thead>
                                     <?php
                                     $where = "";
-                                    $where2 = "";
-
 
 
                                     if(isset($valor2)){
-                                        $where = "WHERE `cod_tracto`='$valor2' AND `clase DT` = 'ZRAC'";
-                                        $where2 = "WHERE `cod_tracto`='$valor2' AND `clase DT` = 'ZRAM'";
+                                        $where = "WHERE `cod_acople`='$valor2' ";
+                                        $where2 = "WHERE `cod_acople`='$valor2' ";
 
 
-                                    $sql = "SELECT * FROM dt $where";
-                                    $sql2 = "SELECT * FROM dt $where2";
-                                    $resultado = $mysqli->query($sql);
-                                    $resultado2 = $mysqli->query($sql2);
+                                    $sql = "SELECT * FROM dt_has_acople $where";
+                                    $sql2 = "SELECT * FROM dt_has_acople $where2";
+
+                                    $resultado = $link->query($sql);
+                                    $resultado2 = $link->query($sql);
 
 
                                     while ($consulta_dt = $resultado->fetch_array(MYSQLI_BOTH))
                                     {
-                                        echo'
+                                        $where3 = "WHERE `numeroDT`='{$consulta_dt['numeroDT']}' AND `clase DT` = 'ZRAC'";
+                                        $sql3 = "SELECT * FROM dt $where3";
+                                        $resultado3 = $link->query($sql3);
 
-                     <tr>
-                     <td>'.$consulta_dt['numero DT'].'</td>
-                     <td>'.$consulta_dt['Fecha Inicio'].'</td>
-                     <td>'.$consulta_dt['Codigo Acople'].'</td>
-                     <td>'.$consulta_dt['Placa Acople'].'</td>
-                     <td>'.$consulta_dt['Codigo Sap'].'</td>
-                     <td>'.$consulta_dt['Nombre'].'</td>
-                     </tr>';}}
+                                        while ($consulta3 = $resultado3->fetch_array(MYSQLI_BOTH))
+                                        {
+                                            $where5 = "WHERE `codigoSAP`='{$consulta3['codigoSAP']}'";
+                                            $sql5 = "SELECT * FROM colaboradores $where5";
+                                            $resultado5 = $link->query($sql5);
+
+                                            while ($consulta5 = $resultado5->fetch_array(MYSQLI_BOTH))
+                                            {
+                                                $where7 = "WHERE `cod_tracto`='{$consulta3['cod_tracto']}'";
+                                                $sql7 = "SELECT * FROM tracto $where7";
+                                                $resultado7 = $link->query($sql7);
+
+                                                while ($consulta7 = $resultado7->fetch_array(MYSQLI_BOTH))
+                                                {
+
+                                                    echo'
+                                         <tr >
+                                         <td>'.$consulta3['numeroDT'].'</td>
+                                         <td>'.$consulta3['FechaInicio'].'</td>   
+                                         <td>'.$consulta3['cod_tracto'].'</td>
+                                         <td>'.$consulta7['placa_tracto'].'</td>
+                                         <td>'.$consulta3['codigoSAP'].'</td>
+                                         <td>'.$consulta5['nombreSAP'].'</td> 
+                                         </tr>';}}}}
+
+
+
 
                                     ?>
                                 </table>
@@ -84,15 +104,15 @@
                         </div>
                         <div class="tab-pane" id="ZRAM" role="tabpanel">
                             <span class="spacer15"></span>
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="verde2">
                                 <table class="table table-striped ">
                                     <thead>
                                     <tr class="text-center">
 
                                         <th>Numero DT</th>
                                         <th>Fecha DT</th>
-                                        <th>Codigo Acople</th>
-                                        <th>Placa Acople</th>
+                                        <th>Codigo Tracto</th>
+                                        <th>Placa Tracto</th>
                                         <th>Codigo Sap</th>
                                         <th>Nombre</th>
 
@@ -101,21 +121,38 @@
                                     </thead>
                                     <?php
 
-
-
                                     while ($consulta2 = $resultado2->fetch_array(MYSQLI_BOTH))
                                     {
+                                    $where4 = "WHERE `numeroDT`='{$consulta2['numeroDT']}' AND `clase DT` = 'ZRAM'";
+                                    $sql4 = "SELECT * FROM dt $where4";
+                                    $resultado4 = $link->query($sql4);
+
+                                    while ($consulta4 = $resultado4->fetch_array(MYSQLI_BOTH))
+                                    {
+                                    $where6 = "WHERE `codigoSAP`='{$consulta4['codigoSAP']}'";
+                                    $sql6 = "SELECT * FROM colaboradores $where6";
+                                    $resultado6 = $link->query($sql6);
+
+                                    while ($consulta6 = $resultado6->fetch_array(MYSQLI_BOTH))
+                                    {
+                                    $where8 = "WHERE `cod_tracto`='{$consulta4['cod_tracto']}'";
+                                    $sql8 = "SELECT * FROM tracto $where8";
+                                    $resultado8 = $link->query($sql8);
+
+                                    while ($consulta8 = $resultado8->fetch_array(MYSQLI_BOTH))
+                                    {
+
+
                                         echo'<tr>
 						 
-						 <td>'.$consulta2['numero DT'].'</td>
-						 <td>'.$consulta2['Fecha Inicio'].'</td>
-						 <td>'.$consulta2['Codigo Acople'].'</td>
-						 <td>'.$consulta2['Placa Acople'].'</td>
-						 <td>'.$consulta2['Codigo Sap'].'</td>
-						 <td>'.$consulta2['Nombre'].'</td>
-						 <td>'.$consulta2['Clase DT'].'</td>
+						 <td>'.$consulta4['numeroDT'].'</td>
+						 <td>'.$consulta4['FechaInicio'].'</td>
+						 <td>'.$consulta4['cod_tracto'].'</td>
+						 <td>'.$consulta8['placa_tracto'].'</td>
+						 <td>'.$consulta4['codigoSAP'].'</td>
+						 <td>'.$consulta6['nombreSAP'].'</td>
 						 </tr>';
-                                    }
+                                    }}}}}
                                     ?>
                                 </table>
                             </div>

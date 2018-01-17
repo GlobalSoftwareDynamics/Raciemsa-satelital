@@ -1,5 +1,5 @@
 <?php
-require 'conexion.php';
+require 'session.php';
 
 
 include ('header.php') ;
@@ -35,7 +35,7 @@ include('navbar.php');
                 <?php
 
                 $sql_code="SELECT * FROM telefonos";
-                $execute = $mysqli->query($sql_code) or die($mysqli->error);
+                $execute = $link->query($sql_code) or die($link->error);
 
                     while ($telefono = $execute->fetch_array(MYSQLI_BOTH))
                     {

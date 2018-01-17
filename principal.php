@@ -1,6 +1,7 @@
 <?php
-require 'conexion.php';
+require 'session.php';
 
+include('funciones.php');
 include ('header.php');
 include('navbar.php')
 
@@ -9,7 +10,7 @@ include('navbar.php')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1 class="pb-2 mb-4 mt-5 offset-1" style="border-bottom: 1px solid lightgray">Dashboard</h1>
+                <h3 class="pb-2 mb-4 mt-4 offset-1" style="border-bottom: 1px solid lightgray">MASTER-RACIEMSA</h3>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -42,7 +43,7 @@ include('navbar.php')
                     <div class="card-header bg-success text-white">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-3x ml"></i>
+                                <i class="fa fa-tasks fa-3x "></i>
                             </div>
                             <div class="col-xs-9 ml-5">
                                 <span>Búsqueda por <br>Código Acople</span>
@@ -53,38 +54,37 @@ include('navbar.php')
                         <div class="card-footer">
                             <div class="row">
                                 <input type="input" name="doc2" class="col-5 form-control offset-3"  id="doc2"  >
-                                <button id="rotulo" class="btn btn-success btn-sm offset-1" name="codigo_acople" >Buscar </button>
+                                <button id="rotulo" class="btn btn-success btn-sm offset-1" name="codigo_acople" >Buscar</button>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
                     </form>
                 </div>
 
-
-                <div class="card border-warning mb-4">
-                    <div class="card-header bg-warning text-white">
+                <div class="card border-info mb-4">
+                    <div class="card-header bg-info text-white">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-3x"></i>
+                                <i class="fa fa-shopping-cart fa-3x "></i>
                             </div>
                             <div class="col-xs-9 ml-5">
                                 <span>Búsqueda por <br>Código Sap</span>
                             </div>
                         </div>
                     </div>
-                    <a href="busqueda_sap.php" class="text-warning">
+                    <form method="POST" class="text-info">
                         <div class="card-footer">
-                            <span class="pull-left">Número de Sap</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="row">
+                            <input type="input" name="doc4" class="col-5 form-control offset-3"  id="doc4"  >
+                            <button id="" class="btn btn-info btn-sm offset-1" name="codigo_sap" >Buscar</button>
                             <div class="clearfix"></div>
+                            </div>
                         </div>
-                    </a>
+                    </form>
                 </div>
 
-
-                <div class="card border-danger mb-4">
-                    <div class="card-header bg-danger text-white">
+                <div class="card border-secondary mb-4">
+                    <div class="card-header bg-secondary text-white">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-support fa-3x"></i>
@@ -95,7 +95,7 @@ include('navbar.php')
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="text-danger">
+                    <a href="#" class="text-secondary">
                         <div class="card-footer">
                             <span class="pull-left">View Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -103,38 +103,52 @@ include('navbar.php')
                         </div>
                     </a>
                 </div>
+
+
         </section>
 
             <section class="col-8">
-                <form method="POST" action="" class="offset-2 ">
-
-                    <div class="form-group row text-center " >
-                        <label for="doc" class="col-form-label mr-3"><b>Colaborador:</b></label>
-                        <input type="text" name="doc" class="form-control col-6" id="doc" autocomplete="off" placeholder="Ingrese Nombre o Apeliido...">
-                        <input type="submit" value="Ver Teléfonos" class="btn-sm btn btn-primary ml-2" name="codigo_nombre">
+                <form method="POST" >
+                    <div class="form-group row text-center offset-2" >
+                        <label for="doc3" class="col-form-label mr-3"><b>Colaborador:</b></label>
+                        <input type="text" name="doc3" class="form-control col-6" id="nombres" placeholder="Ingrese Nombre o Apeliido..." onkeyup="getTelefono(this.value)" >
+                        <a style="color:white" class="btn-sm btn btn-primary ml-2" onclick="getTelefono(nombres.value)">Teléfonos</a>
+                        <input type="submit" value="Ver Dts" class="btn-sm btn btn-danger ml-3" name="codigo_operario">
                     </div>
                 </form>
-                <br>
-                <br>
+
+                <section class="" id="telefonoSap">
+                </section>
+
 
                 <?php
 
                 if(isset($_POST['codigo_tracto']))
                 {
-                $valor = $_POST['doc'];
-
+                    if($_POST['doc'] != ""){
+                    $valor = $_POST['doc'];
                 include_once ('nuevoDT.php');
-
-                }
-
+                }}
 
                 elseif(isset($_POST['codigo_acople']))
                 {
-                $valor2 = $_POST['doc2'];
-
+                    if($_POST['doc2'] != ""){
+                    $valor2 = $_POST['doc2'];
                 include_once ('nuevoAc.php');
-                }
+                }}
+
+                elseif(isset($_POST['codigo_operario']))
+                {
+                if($_POST['doc3'] != ""){
+                    $valor3 = $_POST['doc3'];
+
+                include_once ('nuevoOpe.php');
+                }}
+
+
                 ?>
+
+
 
             </section>
         </div>

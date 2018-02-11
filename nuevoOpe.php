@@ -2,14 +2,27 @@
     <br>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header card-inverse card-info text-center">
-                    <h7 class="font-italic">Búsqueda Dts por Codigo Externo</h7>
+            <div class="card-header py-1">
+                <div class="text-center">
+
+                    <?php
+
+                    $result = mysqli_query($link,"SELECT * FROM colaboradores WHERE nombreSAP='$valor3'");
+                    $row = mysqli_fetch_array($result);
+                    $result2 = mysqli_query($link,"SELECT * FROM Telefonos WHERE codigoSAP = '{$row['codigoSAP']}'");
+                    $row2 = mysqli_fetch_array($result2);
+
+                    ?>
+                    <label class="ml-4">SAP: </label>
+                    <span ><?php echo $row['codigoSAP'] ?></span>
+                    <span class="ml-3"><?php echo $valor3 ?> </span>
+                    <span class="ml-4"><?php echo $row2['Numero'] ?></span>
+
                 </div>
             </div>
             <div class="card-block" >
                 <div class="col-12">
-                    <div class="spacer15"></div>
+                    <div class="spacer10"></div>
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#ZRAC" role="tab">DTs ZRAC</a>

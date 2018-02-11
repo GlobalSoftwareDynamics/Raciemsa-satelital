@@ -2,14 +2,24 @@
     <br>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header card-inverse card-info text-center">
-                    <h7 class="font-italic">Búsqueda Dts por Codigo Externo</h7>
+            <div class="card-header py-1">
+                <div class="text-center">
+                    Búsqueda:
+                    <?php
+
+                    $result = mysqli_query($link,"SELECT * FROM acople WHERE cod_acople='$valor2'");
+                    $row = mysqli_fetch_array($result);
+
+                    ?>
+                    <label class="ml-4"> Cod. Externo: </label>
+                    <span ><?php echo $valor2?></span>
+                    <label class="ml-3">Placa: </label>
+                    <span ><?php echo $row['placa_acople'] ?> </span>
                 </div>
             </div>
             <div class="card-block" >
                 <div class="col-12">
-                    <div class="spacer15"></div>
+                    <div class="spacer10"></div>
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#ZRAC" role="tab">DTs ZRAC</a>

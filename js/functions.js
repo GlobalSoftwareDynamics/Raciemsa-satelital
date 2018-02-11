@@ -1,6 +1,39 @@
 $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
+
+
+$(function() {
+
+    var $contextMenu = $("#contextMenu");
+
+    $("body").on("contextmenu", "table td.edicion ", function(e) {
+        $contextMenu.css({
+            display: "block",
+            left: e.pageX,
+            top: e.pageY
+        });
+
+        $('body').click(function () {
+            $contextMenu.hide();
+        });
+
+        /*$contextMenu.mouseleave(function () {
+            $contextMenu.hide();
+        });*/
+
+        var $row = $(e.target).text();
+        document.fsap.idSap.value = $row;
+
+        return false;
+
+    });
+
+    $contextMenu.on("click", "a", function() {
+        $contextMenu.hide();
+    });
+
 });
+
+
 
 function getTelefono(val) {
     $.ajax({
@@ -47,3 +80,5 @@ function getUnidadMedida(val) {
         }
     });
 }
+
+});

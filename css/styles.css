@@ -4,7 +4,6 @@
 }
 
 
-
 label,p,th,td {
     font-size: 14px;
 }
@@ -51,11 +50,25 @@ body{
 
 .table-responsive{border-radius: 10px;}
 .container-fluid{background: #dae0e5; }
-div.container{background: #cce5ff; }
+/*div.container{background: #cce5ff; }*/
 header.container-fluid{background: #fcf8e3}
 
+#azul{background: #cce5ff}
 #verde{background:#c3e6cb }
 #azul2{background: #9fcdff}
 #verde2{background: #81D87F}
 #rojo{background:#f1b0b7 }
 #rojo2{background: #EE8080}
+
+.margen{margin-top: 30px;}
+
+#contextMenu {
+    position: absolute;
+    display:none;
+}
+
+.boton {
+    border: none;
+    padding: 0;
+    background: none;
+}

@@ -103,8 +103,6 @@ include('navbar.php')
                         </div>
                     </a>
                 </div>
-
-
         </section>
 
             <section class="col-8">
